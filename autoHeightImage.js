@@ -88,7 +88,8 @@ export default class AutoHeightImage extends PureComponent {
   }
 
   render() {
-    console.log(width >= (Dimensions.get('screen').width - 50));
+    console.log('img pic: ' + width);
+    console.log('screen pic: ' + Dimensions.get('screen').width); 
     let widthCheck = ( width <= (Dimensions.get('screen').width ) && width >= (Dimensions.get('screen').width - 50) );
     let resizeModeSet = (widthCheck ? 'cover' : ( this.state.height > 350 ? 'contain' : null ));
     // remove `width` prop from `restProps`
