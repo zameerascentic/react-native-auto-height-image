@@ -93,7 +93,7 @@ export default class AutoHeightImage extends PureComponent {
     const { source, style, width, ...restProps } = this.props;
     return (
       <Image
-        resizeMode={isPortrait ? 'contain' : null}
+        resizeMode={this.props.isPortrait ? 'contain' : null}
         source={source}
         style={[this.styles.image, style]}
         {...restProps}
