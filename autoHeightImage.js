@@ -89,12 +89,12 @@ export default class AutoHeightImage extends PureComponent {
 
   render() {
     let widthCheck = width <= (Dimensions.get('screen').width - 20);
-    let resizeModeSet = (widthCheck ? 'cover' : ( this.state.height > 320 ? 'contain' : null );
+    let resizeModeSet = (widthCheck ? 'cover' : ( this.state.height > 320 ? 'contain' : null ));
     // remove `width` prop from `restProps`
     const { source, style, width, ...restProps } = this.props;
     return (
       <Image
-        resizeMode={this.state.height > 320 ? 'contain' : null}
+        resizeMode={resizeModeSet}
         source={source}
         style={[this.styles.image, style]}
         {...restProps}
