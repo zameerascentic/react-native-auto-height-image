@@ -54,8 +54,7 @@ export default class AutoHeightImage extends PureComponent {
       source,
       width
     );
-    console.log(maximumHeight);
-    console.log(height);
+    
     if (maximumHeight && maximumHeight > 0 && height >= maximumHeight)
     {
       height = maximumHeight;
@@ -73,12 +72,17 @@ export default class AutoHeightImage extends PureComponent {
       this.props.source !== props.source
     ) {
       // image height could not be `0`
-      const { source, width, onHeightChange } = props;
+      const { source, width, onHeightChange, maximumHeight } = props;
       try {
         const updateSequence = ++this.updateSequence;
         const { height } = await getImageSizeFitWidth(source, width);
         if (updateSequence !== this.updateSequence) {
           return;
+        }
+          
+        if (maximumHeight && maximumHeight > 0 && height >= maximumHeight)
+        {
+          height = maximumHeight;
         }
 
         this.styles = StyleSheet.create({ image: { width, height } });
