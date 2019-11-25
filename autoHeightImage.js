@@ -5,7 +5,7 @@
 
 import React, { PureComponent } from 'react';
 import Image from 'react-native-android-image-polyfill';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { getImageSizeFitWidth, getImageSizeFitWidthFromCache } from './cache';
@@ -88,7 +88,8 @@ export default class AutoHeightImage extends PureComponent {
   }
 
   render() {
-    console.log(this.state.height > 320);
+    let widthCheck = width <= (Dimensions.get('screen').width - 20);
+    let resizeModeSet = (widthCheck ? 'cover' : ( this.state.height > 320 ? 'contain' : null );
     // remove `width` prop from `restProps`
     const { source, style, width, ...restProps } = this.props;
     return (
