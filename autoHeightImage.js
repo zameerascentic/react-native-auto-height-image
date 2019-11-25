@@ -17,7 +17,6 @@ const { resizeMode, ...ImagePropTypes } = Image.propTypes;
 export default class AutoHeightImage extends PureComponent {
   static propTypes = {
     ...ImagePropTypes,
-    isPortrait: PropTypes.bool,
     width: PropTypes.number.isRequired,
     onHeightChange: PropTypes.func
   };
@@ -89,12 +88,12 @@ export default class AutoHeightImage extends PureComponent {
   }
 
   render() {
-    console.log(this.props.isPortrait);
+    console.log(this.state.height > 320);
     // remove `width` prop from `restProps`
     const { source, style, width, ...restProps } = this.props;
     return (
       <Image
-        resizeMode={this.props.isPortrait ? 'contain' : null}
+        resizeMode={this.state.height > 320 ? 'contain' : null}
         source={source}
         style={[this.styles.image, style]}
         {...restProps}
