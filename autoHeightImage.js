@@ -54,7 +54,8 @@ export default class AutoHeightImage extends PureComponent {
       source,
       width
     );
-    
+    console.log(maximumHeight);
+    console.log(height);
     if (maximumHeight && maximumHeight > 0 && height >= maximumHeight)
     {
       height = maximumHeight;
