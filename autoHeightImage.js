@@ -75,12 +75,12 @@ export default class AutoHeightImage extends PureComponent {
           return;
         }
 
-        console.log(maximumHeight);
-        console.log(height);
+        console.log('bh: ' + height);
         if (maximumHeight && maximumHeight > 0 && height >= maximumHeight)
         {
           height = maximumHeight;
         }
+        console.log('ah: ' + height);
 
         this.styles = StyleSheet.create({ image: { width, height } });
         if (this.hasMounted) {
