@@ -8,7 +8,6 @@ interface TSource {
 export interface AutoHeightImageProps extends ImageProps {
   source: number | TSource;
   width: number;
-  isPortrait:boolean;
   fallbackSource?: number | TSource;
   onHeightChange?: (height: number) => void;
 }
