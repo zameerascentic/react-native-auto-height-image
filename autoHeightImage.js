@@ -17,6 +17,7 @@ const { resizeMode, ...ImagePropTypes } = Image.propTypes;
 export default class AutoHeightImage extends PureComponent {
   static propTypes = {
     ...ImagePropTypes,
+    isPortrait: PropTypes.bool,
     width: PropTypes.number.isRequired,
     onHeightChange: PropTypes.func
   };
@@ -48,7 +49,7 @@ export default class AutoHeightImage extends PureComponent {
   }
 
   setInitialImageHeight() {
-    const { source, width, onHeightChange } = this.props;
+    const { source, width, onHeightChange, isPortrait } = this.props;
     const { height = DEFAULT_HEIGHT } = getImageSizeFitWidthFromCache(
       source,
       width
@@ -92,6 +93,7 @@ export default class AutoHeightImage extends PureComponent {
     const { source, style, width, ...restProps } = this.props;
     return (
       <Image
+        resizeMode={isPortrait ? 'contain' : null}
         source={source}
         style={[this.styles.image, style]}
         {...restProps}
