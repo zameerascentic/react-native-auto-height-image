@@ -92,8 +92,10 @@ export default class AutoHeightImage extends PureComponent {
   render() {
     // remove `width` prop from `restProps`
     const { source, style, width, ...restProps } = this.props;
+    var imgStyle = {width: this.styles.image.width, height: this.styles.image.height};
     if(this.styles.image.height >= this.props.maximumHeight) {
-      this.styles.image.height = this.props.maximumHeight;
+      console.log('true');
+      imgStyle = {width: this.styles.image.width, height: this.props.maximumHeight};
     }
     return (
       <Image
