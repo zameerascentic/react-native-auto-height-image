@@ -89,6 +89,7 @@ export default class AutoHeightImage extends PureComponent {
   }
 
   render() {
+    console.log(this.props.isPortrait);
     // remove `width` prop from `restProps`
     const { source, style, width, ...restProps } = this.props;
     return (
