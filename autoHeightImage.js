@@ -49,7 +49,7 @@ export default class AutoHeightImage extends PureComponent {
   }
 
   setInitialImageHeight() {
-    const { source, width, onHeightChange, isPortrait } = this.props;
+    const { source, width, onHeightChange, isPortrait, maximumHeight } = this.props;
     const { height = DEFAULT_HEIGHT } = getImageSizeFitWidthFromCache(
       source,
       width
