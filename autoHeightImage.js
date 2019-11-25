@@ -17,6 +17,7 @@ const { resizeMode, ...ImagePropTypes } = Image.propTypes;
 export default class AutoHeightImage extends PureComponent {
   static propTypes = {
     ...ImagePropTypes,
+    maximumHeight: PropTypes.number,
     width: PropTypes.number.isRequired,
     onHeightChange: PropTypes.func
   };
@@ -71,6 +72,11 @@ export default class AutoHeightImage extends PureComponent {
         const { height } = await getImageSizeFitWidth(source, width);
         if (updateSequence !== this.updateSequence) {
           return;
+        }
+        
+        if (maximumHeight && maximumHeight > 0 && height >= maximumHeight)
+        {
+          height = maximumHeight;
         }
 
         this.styles = StyleSheet.create({ image: { width, height } });
