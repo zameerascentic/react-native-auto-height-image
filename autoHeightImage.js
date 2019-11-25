@@ -74,14 +74,7 @@ export default class AutoHeightImage extends PureComponent {
         if (updateSequence !== this.updateSequence) {
           return;
         }
-
-        console.log('bh: ' + height);
-        if (maximumHeight && maximumHeight > 0 && height >= maximumHeight)
-        {
-          height = maximumHeight;
-        }
-        console.log('ah: ' + height);
-
+        
         this.styles = StyleSheet.create({ image: { width, height } });
         if (this.hasMounted) {
           // guard `this.setState` to be valid
